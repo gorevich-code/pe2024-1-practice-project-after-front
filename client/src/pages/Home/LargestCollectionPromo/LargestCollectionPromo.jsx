@@ -1,44 +1,25 @@
-import { Route, Routes } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import collectionsData from './data';
+import CollectionCard from './CollectionCard/CollectionCard';
 import styles from './LargestCollectionPromo.module.sass';
 
 function LargestCollectionPromo () {
   // Prepare empty lists for following grouping cards -> 2 in group
   const collectionCards = cardDataList => {
     let collectionCardsGroup = cardDataList
-      .map((e, idx) => {
-        if (idx % 2 === 0) {
-          return [];
-        } else {
-          return null;
-        }
-      })
+      .map((e, idx) => (idx % 2 === 0 ? [] : null))
       .filter(el => el !== null);
 
     // Need for filling empty  collectionCardsGroup lists
     let currentGroupItemIdx = 0;
 
     // Prepare card markup
-    cardDataList = cardDataList.map(e => (
-      <a
-        href='#'
-        style={{ backgroundColor: e.bgColor }}
-        key={e.text}
-        className={styles.collectionCard}
-      >
-        <img
-          className={
-            e.icon ? styles.collectionCardIcon : styles.collectionCardImg
-          }
-          src={e.icon ? e.icon : e.image}
-        ></img>
-        <div className={styles.collectionCardText}>{e.text}</div>
-      </a>
+    const cardsMarkUpList = cardDataList.map(e => (
+      <CollectionCard cardData={e} />
     ));
 
     // Filter prepared card markup into collectionCardsGroup lists
-    cardDataList.forEach((e, idx) => {
+    cardsMarkUpList.forEach((e, idx) => {
       if (idx > 0 && idx % 2 === 0) {
         currentGroupItemIdx++;
       }
@@ -47,7 +28,6 @@ function LargestCollectionPromo () {
 
     // Convert collectionCardsGroup lists into collectionCardsGroup divs
     return collectionCardsGroup.map(e => {
-      console.log(e);
       return (
         <div className={styles.collectionCardsGroup} key={e[0].key}>
           {e}
@@ -90,7 +70,7 @@ function LargestCollectionPromo () {
           <TabPanel>
             <div className={styles.collectionLinkBox}>
               <div className={styles.cardsBox}>
-                {collectionCards(collectionsData.TopCategories)}
+                {collectionCards(collectionsData.topCategories)}
               </div>
               <a href='#' className={styles.viewAllLink}>
                 View all Categories
@@ -101,7 +81,7 @@ function LargestCollectionPromo () {
           <TabPanel>
             <div className={styles.collectionLinkBox}>
               <div className={styles.cardsBox}>
-                {collectionCards(collectionsData.TopIndustries)}
+                {collectionCards(collectionsData.topIndustries)}
               </div>
               <a href='#' className={styles.viewAllLink}>
                 View all Industries
@@ -112,7 +92,7 @@ function LargestCollectionPromo () {
           <TabPanel>
             <div className={styles.collectionLinkBox}>
               <div className={styles.cardsBox}>
-                {collectionCards(collectionsData.TopIdeas)}
+                {collectionCards(collectionsData.topIdeas)}
               </div>
               <a href='#' className={styles.viewAllLink}>
                 View all Ideas
@@ -126,5 +106,3 @@ function LargestCollectionPromo () {
 }
 
 export default LargestCollectionPromo;
-
-import React from 'react';
