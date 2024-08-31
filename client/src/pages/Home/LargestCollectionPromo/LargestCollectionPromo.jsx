@@ -15,7 +15,7 @@ function LargestCollectionPromo () {
 
     // Prepare card markup
     const cardsMarkUpList = cardDataList.map(e => (
-      <CollectionCard cardData={e} />
+      <CollectionCard cardData={e} key={e.text} />
     ));
 
     // Filter prepared card markup into collectionCardsGroup lists

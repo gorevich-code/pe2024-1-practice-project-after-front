@@ -5,7 +5,6 @@ function CollectionCard ({ cardData }) {
     <a
       href='#'
       style={{ backgroundColor: cardData.bgColor }}
-      key={cardData.text}
       className={styles.collectionCard}
     >
       <img
