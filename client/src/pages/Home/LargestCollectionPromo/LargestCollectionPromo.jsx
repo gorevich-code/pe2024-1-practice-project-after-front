@@ -6,7 +6,7 @@ import styles from './LargestCollectionPromo.module.sass';
 function LargestCollectionPromo () {
   // Prepare empty lists for following grouping cards -> 2 in group
   const collectionCards = cardDataList => {
-    let collectionCardsGroup = cardDataList
+    const collectionCardsGroup = cardDataList
       .map((e, idx) => (idx % 2 === 0 ? [] : null))
       .filter(el => el !== null);
 
@@ -27,13 +27,11 @@ function LargestCollectionPromo () {
     });
 
     // Convert collectionCardsGroup lists into collectionCardsGroup divs
-    return collectionCardsGroup.map(e => {
-      return (
-        <div className={styles.collectionCardsGroup} key={e[0].key}>
-          {e}
-        </div>
-      );
-    });
+    return collectionCardsGroup.map(e => (
+      <div className={styles.collectionCardsGroup} key={e[0].key}>
+        {e}
+      </div>
+    ));
   };
   return (
     <>
