@@ -3,7 +3,7 @@ import CONSTANTS from './../../../constants';
 const { STATIC_IMAGES_PATH } = CONSTANTS;
 
 const data = {
-  TopCategories: [
+  topCategories: [
     {
       icon: `${STATIC_IMAGES_PATH}home/LargestCollectionPromo/TopCategories/nh-collection-icon1.svg`,
       bgColor: '#f7f5f3',
@@ -45,7 +45,7 @@ const data = {
       text: 'On Sale',
     },
   ],
-  TopIndustries: [
+  topIndustries: [
     {
       image: `${STATIC_IMAGES_PATH}home/LargestCollectionPromo/TopIndustries/fashion-clothing-750-04.webp`,
       bgColor: '#f7f5f3',
@@ -87,7 +87,7 @@ const data = {
       text: 'Tech, Internet, Software Domains',
     },
   ],
-  TopIdeas: [
+  topIdeas: [
     {
       image: `${STATIC_IMAGES_PATH}home/LargestCollectionPromo/TopIdeas/other-750-14.webp`,
       bgColor: '#f7f5f3',
